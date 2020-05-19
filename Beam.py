@@ -138,9 +138,8 @@ def drag(event):
 
 def enter_pressed(identification_number, f_in, d_in):
     try:
-        print(loads_list)
-        loads_list[0][identification_number-1].setForce(f_in.get())
-        loads_list[0][identification_number-1].setDistance(d_in.get())
+        loads_list[0][identification_number - 1].setForce(f_in.get())
+        loads_list[0][identification_number - 1].setDistance(d_in.get())
     except ValueError:
         pass
 
@@ -148,8 +147,8 @@ def enter_pressed(identification_number, f_in, d_in):
 def positive_vertical_point_load_pushed():
     global positive_vertical_point_count
     positive_vertical_point_count += 1
-    pvpl = PositiveVerticalPointLoad(positive_vertical_point_count)
-    positive_vertical_point_load_list.append(pvpl)
+    positive_vertical_point_load_list.append(PositiveVerticalPointLoad(positive_vertical_point_count))
+    print(pvpl)
 
 
 def negative_vertical_point_load_pushed():
@@ -176,6 +175,11 @@ window.geometry('1220x720+360+90')
 canvas = Canvas(window, bg='light grey', height=720, width=1220)
 canvas.pack()
 canvas.create_rectangle(120, 300, 810, 360, fill='black')
+canvas.create_rectangle(122, 302, 808, 358, fill='light blue')
+canvas.create_rectangle(122, 302, 808, 312, fill='light gray')
+canvas.create_rectangle(122, 348, 808, 358, fill='light gray')
+canvas.create_rectangle(122, 312, 808, 313, fill='black')
+canvas.create_rectangle(122, 347, 808, 348, fill='black')
 canvas.create_line(120, 120, 120, 295, width=3)
 canvas.create_line(810, 120, 810, 295, width=3)
 canvas.create_line(120, 140, 810, 140, width=3)
