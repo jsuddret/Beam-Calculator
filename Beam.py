@@ -3,171 +3,163 @@ from pandas import DataFrame
 
 
 class PositiveVerticalPointLoad:
-    force = 0
-    distance = 0
 
-    def __init__(self, count):
-        c = Canvas(window, height=100, width=51)
+    def __init__(self):
+
+        def enter_pressed():
+            try:
+                y_force_list.append(float(force_input.get()))
+                y_force_distance_list.append(float(distance_input.get()))
+                data_window.destroy()
+            except ValueError:
+                pass
+
+        c = Canvas(window, height=90, width=9, bg='light grey', highlightthickness=0)
         c.pack(expand=1, fill=BOTH)
-        c.place(x=925, y=50)
-        c.create_line(27, 10, 27, 90, width=4)
-        c.create_line(17, 30, 27, 11, width=4)
-        c.create_line(37, 30, 27, 11, width=4)
-        id_num = count
-        c.bind('<Double-Button-1>', on_double_click_positive_point_load(id_num))
+        c.place(x=910, y=125, anchor=CENTER)
+        c.create_line(4, 90, 4, 0, fill='black', arrow=LAST, width=3)
         c.bind(w, drag)
-
-    def getForce(self):
-        return self.force
-
-    def setForce(self, F):
-        self.force = F
-
-    def getDistance(self):
-        return self.distance
-
-    def setDistance(self, d):
-        self.distance = d
+        data_window = Tk()
+        data_window.geometry('360x240')
+        data_window.configure(bg='light grey')
+        force_input_label = Label(data_window, text='Force:\t\t\tN', bg='light grey')
+        force_input_label.place(x=155, y=60, anchor=CENTER)
+        force_input = Entry(data_window, width=10)
+        force_input.place(x=180, y=60, anchor=CENTER)
+        distance_input_label = Label(data_window, text='Distance:\t\tm', bg='light grey')
+        distance_input_label.place(x=156, y=90, anchor=CENTER)
+        distance_input = Entry(data_window, width=10)
+        distance_input.place(x=180, y=90, anchor=CENTER)
+        enter_button = Button(data_window, text='Enter', bg='light grey', command=enter_pressed)
+        enter_button.place(x=180, y=125, anchor=CENTER)
+        data_window.mainloop()
 
 
 class NegativeVerticalPointLoad:
-    force = 0
-    distance = 0
 
     def __init__(self):
-        c = Canvas(window, height=100, width=51)
+        def enter_pressed():
+            try:
+                y_force_list.append(int(force_input.get()) * -1)
+                y_force_distance_list.append(int(distance_input.get()))
+                data_window.destroy()
+            except ValueError:
+                pass
+
+        c = Canvas(window, height=90, width=9, bg='light grey', highlightthickness=0)
         c.pack(expand=1, fill=BOTH)
-        c.place(x=925, y=50)
-        c.create_line(27, 10, 27, 95, width=4)
-        c.create_line(17, 75, 27, 96, width=4)
-        c.create_line(37, 75, 27, 96, width=4)
+        c.place(x=912, y=125, anchor=CENTER)
+        c.create_line(4, 0, 4, 90, fill='black', arrow=LAST, width=3)
         c.bind(w, drag)
-
-    def getForce(self):
-        return self.force
-
-    def setForce(self, F):
-        self.force = F
-
-    def getDistance(self):
-        return self.distance
-
-    def setDistance(self, d):
-        self.distance = d
+        data_window = Tk()
+        data_window.geometry('360x240')
+        data_window.configure(bg='light grey')
+        force_input_label = Label(data_window, text='Force:\t\t\tN', bg='light grey')
+        force_input_label.place(x=155, y=60, anchor=CENTER)
+        force_input = Entry(data_window, width=10)
+        force_input.place(x=180, y=60, anchor=CENTER)
+        distance_input_label = Label(data_window, text='Distance:\t\tm', bg='light grey')
+        distance_input_label.place(x=156, y=90, anchor=CENTER)
+        distance_input = Entry(data_window, width=10)
+        distance_input.place(x=180, y=90, anchor=CENTER)
+        enter_button = Button(data_window, text='Enter', bg='light grey', command=enter_pressed)
+        enter_button.place(x=180, y=125, anchor=CENTER)
+        data_window.mainloop()
 
 
 class PositivePointMomentLoad:
-    magnitude = 0
-    distance = 0
 
     def __init__(self):
-        c = Canvas(window, height=100, width=51)
+        def enter_pressed():
+            try:
+                moment_list.append(int(force_input.get()))
+                moment_distance_list.append(int(distance_input.get()))
+                data_window.destroy()
+            except ValueError:
+                pass
+
+        c = Canvas(window, height=45, width=45, bg='light grey', highlightthickness=0)
         c.pack(expand=1, fill=BOTH)
-        c.place(x=925, y=50)
-        c.create_arc(35, 90, 10, 20, start=-95, extent=180, width=4)
-        c.create_line(21, 90, 24, 20, fill='SystemButtonFace', width=4)
-        c.create_line(26, 20, 44, 34, width=4)
-        c.create_line(26, 20, 22, 44, width=4)
-        c.create_oval(20, 52, 25, 57, fill='black')
+        c.place(x=912, y=125, anchor=CENTER)
+        c.create_oval(5, 5, 40, 40, width=3)
+        c.create_line(5, 30, 5, 31, fill='black', arrow=LAST, width=3)
         c.bind(w, drag)
-
-    def getForce(self):
-        return self.magnitude
-
-    def setForce(self, F):
-        self.magnitude = F
-
-    def getDistance(self):
-        return self.distance
-
-    def setDistance(self, d):
-        self.distance = d
+        data_window = Tk()
+        data_window.geometry('360x240')
+        data_window.configure(bg='light grey')
+        force_input_label = Label(data_window, text='Magnitude:\t\t\tN', bg='light grey')
+        force_input_label.place(x=155, y=60, anchor=CENTER)
+        force_input = Entry(data_window, width=10)
+        force_input.place(x=180, y=60, anchor=CENTER)
+        distance_input_label = Label(data_window, text='Distance:\t\tm', bg='light grey')
+        distance_input_label.place(x=156, y=90, anchor=CENTER)
+        distance_input = Entry(data_window, width=10)
+        distance_input.place(x=180, y=90, anchor=CENTER)
+        enter_button = Button(data_window, text='Enter', bg='light grey', command=enter_pressed)
+        enter_button.place(x=180, y=125, anchor=CENTER)
+        data_window.mainloop()
 
 
 class NegativePointMomentLoad:
-    magnitude = 0
-    distance = 0
 
     def __init__(self):
-        c = Canvas(window, height=100, width=51)
+        def enter_pressed():
+            try:
+                moment_list.append(int(force_input.get()) * -1)
+                moment_distance_list.append(int(distance_input.get()))
+                data_window.destroy()
+            except ValueError:
+                pass
+
+        c = Canvas(window, height=45, width=45, bg='light grey', highlightthickness=0)
         c.pack(expand=1, fill=BOTH)
-        c.place(x=925, y=50)
-        c.create_arc(40, 90, 15, 20, start=95, extent=180, width=4)
-        c.create_line(26, 21, 29, 95, fill='SystemButtonFace', width=4)
-        c.create_line(25, 19, 28, 42, width=4)
-        c.create_line(25, 19, 8, 30, width=4)
-        c.create_oval(25, 52, 30, 57, fill='black')
+        c.place(x=912, y=125, anchor=CENTER)
+        c.create_oval(5, 5, 40, 40, width=3)
+        c.create_line(5, 19, 5, 18, fill='black', arrow=LAST, width=3)
         c.bind(w, drag)
-
-    def getForce(self):
-        return self.magnitude
-
-    def setForce(self, F):
-        self.magnitude = F
-
-    def getDistance(self):
-        return self.distance
-
-    def setDistance(self, d):
-        self.distance = d
-
-
-def on_double_click_positive_point_load(identification_number):
-    data_window = Tk()
-    data_window.geometry('360x240+560+240')
-    data_window.configure(bg='light grey')
-    c = Canvas(data_window, height=240, width=360)
-    c.pack()
-    c.create_text(120, 60, text='Force: ')
-    force_input = Entry(c, width=12)
-    force_input.place(x=150, y=50)
-    c.create_text(245, 60, text='N')
-    c.create_text(127, 90, text='Distance: ')
-    distance_input = Entry(c, width=12)
-    distance_input.place(x=160, y=80)
-    c.create_text(254, 90, text='m')
-    enter_button = Button(c, text='Enter', command=lambda: enter_pressed(identification_number, force_input,
-                                                                         distance_input))
-    enter_button.place(x=180, y=125, anchor=CENTER)
-    data_window.mainloop()
+        data_window = Tk()
+        data_window.geometry('360x240')
+        data_window.configure(bg='light grey')
+        force_input_label = Label(data_window, text='Magnitude:\t\t\tN', bg='light grey')
+        force_input_label.place(x=155, y=60, anchor=CENTER)
+        force_input = Entry(data_window, width=10)
+        force_input.place(x=180, y=60, anchor=CENTER)
+        distance_input_label = Label(data_window, text='Distance:\t\tm', bg='light grey')
+        distance_input_label.place(x=156, y=90, anchor=CENTER)
+        distance_input = Entry(data_window, width=10)
+        distance_input.place(x=180, y=90, anchor=CENTER)
+        enter_button = Button(data_window, text='Enter', bg='light grey', command=enter_pressed)
+        enter_button.place(x=180, y=125, anchor=CENTER)
+        data_window.mainloop()
 
 
 def drag(event):
     event.widget.place(x=event.x_root - 360, y=event.y_root - 110, anchor=CENTER)
 
 
-def enter_pressed(identification_number, f_in, d_in):
-    try:
-        loads_list[0][identification_number - 1].setForce(f_in.get())
-        loads_list[0][identification_number - 1].setDistance(d_in.get())
-    except ValueError:
-        pass
-
-
 def positive_vertical_point_load_pushed():
-    global positive_vertical_point_count
-    positive_vertical_point_count += 1
-    positive_vertical_point_load_list.append(PositiveVerticalPointLoad(positive_vertical_point_count))
-    print(pvpl)
+    PositiveVerticalPointLoad()
 
 
 def negative_vertical_point_load_pushed():
-    nvpl = NegativeVerticalPointLoad()
-    negative_vertical_point_load_list.append(nvpl)
+    NegativeVerticalPointLoad()
 
 
 def positive_point_moment_pushed():
-    ppml = PositivePointMomentLoad()
-    positive_point_moment_list.append(ppml)
+    PositivePointMomentLoad()
 
 
 def negative_point_moment_pushed():
-    npml = NegativePointMomentLoad()
-    negative_point_moment_list.append(npml)
+    NegativePointMomentLoad()
 
 
 def calculate_pressed():
-    print(loads_list[0][0].getForce())
+    global length
+    try:
+        length = length_input.get()
+    except ValueError:
+        pass
+    print(force_list)
 
 
 window = Tk()
@@ -192,21 +184,20 @@ length_input = Entry(window, bg='light grey', width=10)
 length_input.place(x=425, y=120)
 length = 0
 w = "<B1-Motion>"
-positive_vertical_point_load_list = []
-positive_vertical_point_count = 0
-negative_vertical_point_load_list = []
-positive_point_moment_list = []
-negative_point_moment_list = []
-loads_list = [positive_vertical_point_load_list, negative_vertical_point_load_list,
-              positive_point_moment_list, negative_point_moment_list]
-positive_point_load_button = Button(window, bg='light grey', text='Point Load (+)', fg='black', width=15,
-                                    command=positive_vertical_point_load_pushed).place(x=1070, y=50)
-negative_point_load_button = Button(window, bg='light grey', text='Point Load (-)', fg='black', width=15,
-                                    command=negative_vertical_point_load_pushed).place(x=1070, y=85)
-positive_point_moment_button = Button(window, bg='light grey', text='Point Moment (+)', fg='black', width=15,
-                                      command=positive_point_moment_pushed).place(x=1070, y=120)
-negative_point_moment_button = Button(window, bg='light grey', text='Point Moment (-)', fg='black', width=15,
-                                      command=negative_point_moment_pushed).place(x=1070, y=155)
-calculate_button = Button(window, bg='light grey', text='Calculate', fg='black', width=15,
-                          command=calculate_pressed).place(x=1070, y=190)
+x_force_list = []
+y_force_list = []
+x_force_distance_list = []
+y_force_distance_list = []
+moment_list = []
+moment_distance_list = []
+positive_point_load_button = Button(window, bg='light grey', text='Vertical Point Load (+)', fg='black', width=20,
+                                    command=positive_vertical_point_load_pushed).place(x=1000, y=50)
+negative_point_load_button = Button(window, bg='light grey', text='Vertical Point Load (-)', fg='black', width=20,
+                                    command=negative_vertical_point_load_pushed).place(x=1000, y=85)
+positive_point_moment_button = Button(window, bg='light grey', text='Point Moment (+)', fg='black', width=20,
+                                      command=positive_point_moment_pushed).place(x=1000, y=120)
+negative_point_moment_button = Button(window, bg='light grey', text='Point Moment (-)', fg='black', width=20,
+                                      command=negative_point_moment_pushed).place(x=1000, y=155)
+calculate_button = Button(window, bg='light grey', text='Calculate', fg='black', width=20,
+                          command=calculate_pressed).place(x=1000, y=190)
 window.mainloop()
